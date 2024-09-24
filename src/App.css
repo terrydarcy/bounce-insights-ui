@@ -1,38 +1,14 @@
-.App {
-  text-align: center;
+.popup {
+  font-family: "Arial", sans-serif; /* Change font */
+  font-size: 14px;
+  max-width: 200px; /* Limit width of popup */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.popup h3 {
+  margin: 0; /* Remove default margin */
+  color: #ff5722; /* Customize header color */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.popup p {
+  margin: 5px 0; /* Add some space between paragraphs */
 }
