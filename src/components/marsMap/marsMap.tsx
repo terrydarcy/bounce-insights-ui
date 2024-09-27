@@ -15,7 +15,7 @@ export default function MarsMap() {
 
   return (
     <div className="map-container">
-      <Typography variant="h3">Explore Mars Landscape</Typography>
+      <Typography variant="h4">Explore Mars Landscape</Typography>
       <div className="map">
         <MapContainer
           center={[-4.5895, 137.4417]}
