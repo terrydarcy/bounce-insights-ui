@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./apod.scss";
 import { ApiService } from "../../services/apiService";
 import { ApodResponse } from "../../interfaces/apiInterface";
+import { Typography } from "@mui/material";
 
 export default function APOD() {
   const [APODData, setAPODData] = useState<ApodResponse | null>(null);
@@ -15,12 +16,12 @@ export default function APOD() {
   }, []);
   return (
     <div className="apod-container">
-      <h1>Astronomy Picture of The Day</h1>
+      <Typography variant="h4">Astronomy Picture of The Day</Typography>
       {APODData && (
         <>
           <img src={APODData.url} alt={APODData.title} />
-          <h2>{APODData.title}</h2>
-          <p>{APODData.explanation}</p>
+          <Typography variant="h3">{APODData.title}</Typography>
+          <Typography variant="body2">{APODData.explanation}</Typography>
         </>
       )}
     </div>

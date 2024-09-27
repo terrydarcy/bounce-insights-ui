@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import rocketIconImg from "../../rocket.png"; // Import your local image
 import { marsLandings, marsPOIs } from "./marsMapData";
+import { Typography } from "@mui/material";
 
 export default function MarsMap() {
   const rocketIcon = new Icon({
@@ -14,7 +15,7 @@ export default function MarsMap() {
 
   return (
     <div className="map-container">
-      <h3 className="map-title">Explore Mars Landscape</h3>
+      <Typography variant="h3">Explore Mars Landscape</Typography>
       <div className="map">
         <MapContainer
           center={[-4.5895, 137.4417]}
@@ -36,14 +37,18 @@ export default function MarsMap() {
               ]}
             >
               <Popup className="popup">
-                <h3>{landing.name} Mars Landing Site</h3>
-                <p>
+                <Typography variant="h5" className="title">
+                  {landing.name} Mars Landing Site
+                </Typography>
+                <Typography variant="body2">
                   <strong>Landing Date:</strong> {landing.landing_date}
-                </p>
-                <p>{landing.mission_description}</p>
-                <p>
-                  <strong>Outcome:</strong> {landing.outcome}
-                </p>
+                </Typography>
+                <Typography variant="body2">
+                  {landing.mission_description}
+                </Typography>
+                <Typography variant="body2">
+                  <strong>Mission Outcome:</strong> {landing.outcome}
+                </Typography>
               </Popup>
             </Marker>
           ))}
@@ -54,8 +59,10 @@ export default function MarsMap() {
               position={[poi.coordinates.latitude, poi.coordinates.longitude]}
             >
               <Popup className="popup">
-                <h3>{poi.name} Point of Interest</h3>
-                <p>{poi.description}</p>
+                <Typography variant="h4" className="title">
+                  {poi.name} Point of Interest
+                </Typography>
+                <Typography variant="body2">{poi.description}</Typography>
               </Popup>
             </Marker>
           ))}

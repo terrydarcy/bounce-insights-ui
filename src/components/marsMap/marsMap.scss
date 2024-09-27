@@ -1,11 +1,16 @@
-.leaflet-container {
-  background-color: rgba(255, 0, 0, 0);
+.popup {
+  font-size: 14px;
+  max-width: 200px; /* Limit width of popup */
 }
 
-.map-title {
-  text-align: center;
-  margin-bottom: 10px;
-  margin-top: 0px;
+.popup {
+  .title {
+    color: #ff5722; /* Customize header color */
+  }
+}
+
+.leaflet-container {
+  background-color: rgba(255, 0, 0, 0);
 }
 
 .map-container {

@@ -6,25 +6,54 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
 import Home from "./pages/home/home";
-import marsIcon from "./mars3.png";
-import {
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from "@mui/material";
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
 
 function App() {
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
+    },
+    typography: {
+      h1: {
+        fontWeight: 600,
+        fontSize: "2.25rem",
+        lineHeight: 2.75,
+      },
+      h2: {
+        fontWeight: 600,
+        fontSize: "1.625rem",
+        lineHeight: 2.125,
+      },
+      h3: {
+        fontWeight: 600,
+        fontSize: "1.375rem",
+        lineHeight: 1.75,
+      },
+      h4: {
+        fontWeight: 600,
+        fontSize: "1.125rem",
+        lineHeight: 1.5,
+      },
+      h5: {
+        fontWeight: 600,
+        fontSize: "1rem",
+        lineHeight: 1.25,
+      },
+      h6: {
+        fontWeight: 600,
+        fontSize: "0.875rem",
+        lineHeight: 1.25,
+      },
+      body1: {
+        fontSize: "1rem",
+        lineHeight: 1.5,
+      },
+      body2: {
+        fontSize: "0.875rem",
+        lineHeight: 1.25,
+      },
     },
   });
 
@@ -33,60 +62,14 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <main>
-          {process.env.NODE_ENV}
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed" sx={{ opacity: 0.8 }}>
-              <Toolbar>
-                <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 2 }}
-                >
-                  <img src={marsIcon} alt="mars icon" style={{ width: 50 }} />
-                </IconButton>
-                <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                  Mars Explorer
-                </Typography>
-                <Divider />
-                <List sx={{ display: "flex" }}>
-                  <ListItem key={"apod"} disablePadding>
-                    <ListItemButton sx={{ textAlign: "center" }}>
-                      <ListItemText primary={"APOD"} />
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem key={"map"} disablePadding>
-                    <ListItemButton sx={{ textAlign: "center", marginLeft: 5 }}>
-                      <ListItemText primary={"Map"} />
-                    </ListItemButton>
-                  </ListItem>{" "}
-                  <ListItem key={"rover"} disablePadding>
-                    <ListItemButton
-                      sx={{
-                        textAlign: "center",
-                        textWrap: "nowrap",
-                        marginLeft: 5,
-                      }}
-                    >
-                      <ListItemText primary={"Rover Images"} />
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem key={"weather"} disablePadding>
-                    <ListItemButton sx={{ textAlign: "center", marginLeft: 5 }}>
-                      <ListItemText primary={"Weather"} />
-                    </ListItemButton>
-                  </ListItem>
-                </List>
-              </Toolbar>
-            </AppBar>
-          </Box>
+          <Header />
           <div className="container">
             <div className="stars-background"></div>
             <div className="mars-texture"></div>
             <div></div>
             <Home />
           </div>
+          <Footer />
         </main>
       </ThemeProvider>
     </div>
