@@ -41,7 +41,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ opacity: 0.8 }}>
+      <AppBar position="fixed" sx={{ opacity: 1 }}>
         <Toolbar>
           <IconButton
             size="large"

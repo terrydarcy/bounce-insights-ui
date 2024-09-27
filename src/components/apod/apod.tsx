@@ -10,8 +10,12 @@ export default function APOD() {
 
   useEffect(() => {
     const apiService = new ApiService();
-    apiService.fetchApod().then((data) => {
+    apiService.getAPOD().then((data) => {
       setAPODData(data);
+      console.log(data);
+    });
+
+    apiService.getMarsWeather().then((data) => {
       console.log(data);
     });
   }, []);
