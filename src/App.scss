@@ -1,0 +1,76 @@
+.popup {
+  font-size: 14px;
+  max-width: 200px; /* Limit width of popup */
+}
+
+.popup h3 {
+  margin: 0; /* Remove default margin */
+  color: #ff5722; /* Customize header color */
+}
+
+.popup p {
+  margin: 5px 0; /* Add some space between paragraphs */
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 70px;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.stars-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: radial-gradient(
+      2px 2px at 20px 30px,
+      #eee,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 41px 60px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 52px 130px, #ddd, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 98px 10px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 200px 100px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 110px 80px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 152px 120px, #ddd, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+.mars-texture {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  opacity: 0.3;
+
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(195, 86, 47, 0.7) 25%,
+    rgb(176, 73, 73, 0.8) 50%,
+    transparent
+  );
+}

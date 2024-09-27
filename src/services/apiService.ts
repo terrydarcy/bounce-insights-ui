@@ -4,8 +4,10 @@ export class ApiService {
   baseUrl: string;
 
   constructor() {
+    console.log(process.env.REACT_APP_BASE_URL);
     this.baseUrl =
-      "http://127.0.0.1:5001/bounce-insights-api/us-central1/bounce_insights_api";
+      process.env.REACT_APP_BASE_URL ||
+      "http://127.0.0.1:5001/bounce-insights-ui/us-central1/bounce_insights_api";
   }
 
   async fetchApod() {
