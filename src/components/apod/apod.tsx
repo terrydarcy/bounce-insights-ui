@@ -6,7 +6,7 @@ import { Typography } from "@mui/material";
 import MoonLoader from "react-spinners/MoonLoader";
 
 export default function APOD() {
-  const [APODData, setAPODData] = useState<ApodResponse | null>(null);
+  const [APODData, setAPODData] = useState<ApodResponse | undefined>();
 
   useEffect(() => {
     const apiService = new ApiService();
