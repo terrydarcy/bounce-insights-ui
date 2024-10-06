@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './header.scss';
-import marsIcon from '../../mars3.png';
+import marsIcon from '../../mars.png';
 import { Divider, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
