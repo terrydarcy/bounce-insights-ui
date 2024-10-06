@@ -4,8 +4,8 @@ This is a react front end that integrates with a firebase function nodejs backen
 
 # How to run front end:
 
-npm i
-npm start
+- npm i
+- npm start
 
 when run from dev environment the front end will try connect with backend url: http://127.0.0.1:5001/bounce-insights-ui/us-central1/bounce_insights_api
 
