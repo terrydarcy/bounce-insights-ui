@@ -1,9 +1,11 @@
-import "./marsMap.scss";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
-import rocketIconImg from "../../rocket.png"; // Import your local image
-import { marsLandings, marsPOIs } from "./marsMapData";
-import { Typography } from "@mui/material";
+import './marsMap.scss';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Icon } from 'leaflet';
+import rocketIconImg from '../../rocket.png'; // Import your local image
+import { marsLandings, marsPOIs } from './marsMapData';
+import { Typography } from '@mui/material';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 export default function MarsMap() {
   const rocketIcon = new Icon({
@@ -14,28 +16,18 @@ export default function MarsMap() {
   });
 
   return (
-    <div className="map-container">
+    <div className="home-container map-container">
       <Typography variant="h4">Explore Mars Landscape</Typography>
+      <Typography variant="body1">Click on the markers to learn more about Mars landings and points of interest.</Typography>
       <div className="map">
-        <MapContainer
-          center={[-4.5895, 137.4417]}
-          zoom={2}
-          scrollWheelZoom={true}
-        >
+        <MapContainer center={[-4.5895, 137.4417]} zoom={2} scrollWheelZoom={true}>
           <TileLayer
             updateWhenIdle={true}
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mars-basemap-v0-2/all/{z}/{x}/{y}.png"
           />
           {marsLandings.map((landing, index) => (
-            <Marker
-              key={index}
-              icon={rocketIcon}
-              position={[
-                landing.coordinates.latitude,
-                landing.coordinates.longitude,
-              ]}
-            >
+            <Marker key={index} icon={rocketIcon} position={[landing.coordinates.latitude, landing.coordinates.longitude]}>
               <Popup className="popup">
                 <Typography variant="h5" className="title">
                   {landing.name} Mars Landing Site
@@ -43,9 +35,7 @@ export default function MarsMap() {
                 <Typography variant="body2">
                   <strong>Landing Date:</strong> {landing.landing_date}
                 </Typography>
-                <Typography variant="body2">
-                  {landing.mission_description}
-                </Typography>
+                <Typography variant="body2">{landing.mission_description}</Typography>
                 <Typography variant="body2">
                   <strong>Mission Outcome:</strong> {landing.outcome}
                 </Typography>
@@ -54,10 +44,7 @@ export default function MarsMap() {
           ))}
 
           {marsPOIs.map((poi, index) => (
-            <Marker
-              key={index}
-              position={[poi.coordinates.latitude, poi.coordinates.longitude]}
-            >
+            <Marker key={index} position={[poi.coordinates.latitude, poi.coordinates.longitude]}>
               <Popup className="popup">
                 <Typography variant="h4" className="title">
                   {poi.name} Point of Interest

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import "./apod.scss";
-import { ApiService } from "../../services/apiService";
-import { ApodResponse } from "../../interfaces/apiInterface";
-import { Typography } from "@mui/material";
-import MoonLoader from "react-spinners/MoonLoader";
+import React, { useEffect, useState } from 'react';
+import './apod.scss';
+import { ApiService } from '../../services/apiService';
+import { ApodResponse } from '../../models/nasaApiInterface';
+import { Typography } from '@mui/material';
+import MoonLoader from 'react-spinners/MoonLoader';
 
 export default function APOD() {
   const [APODData, setAPODData] = useState<ApodResponse | undefined>();
@@ -12,15 +12,15 @@ export default function APOD() {
     const apiService = new ApiService();
     apiService.getAPOD().then((data) => {
       setAPODData(data);
-      console.log(data);
     });
 
     apiService.getMarsWeather().then((data) => {
-      console.log(data);
+      console.log('weather data', data);
     });
   }, []);
+
   return (
-    <div className="apod-container">
+    <div className="apod-container home-container">
       {APODData ? (
         <>
           <Typography variant="h4">Astronomy Picture of The Day</Typography>

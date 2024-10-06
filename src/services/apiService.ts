@@ -1,23 +1,36 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { ApodData, WeatherData, RoverImageData, RoverType } from '../models/nasaApiInterface';
 
 export class ApiService {
   baseUrl: string;
+  axiosInstance: AxiosInstance;
 
   constructor() {
     this.baseUrl = process.env.REACT_APP_BASE_URL || 'http://127.0.0.1:5001/bounce-insights-ui/us-central1/bounce_insights_api';
+
+    this.axiosInstance = axios.create({
+      baseURL: this.baseUrl,
+      timeout: 10000,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   async getWithRetry(url: string, retries: number, delay: number): Promise<any> {
     try {
-      const response = (await axios.get(url)).data;
+      const response = (await this.axiosInstance.get(url)).data;
       return response;
-    } catch (error) {
-      if (retries > 0) {
+    } catch (error: any) {
+      console.error(error);
+      const isRetryable = error.response ? error.response.status >= 500 : !error.response;
+
+      if (retries > 0 && isRetryable) {
+        console.warn(`Retrying... attempts remaining: ${retries}, error: ${error.message}`);
+
         await new Promise((resolve) => setTimeout(resolve, delay));
         return this.getWithRetry(url, retries - 1, delay * 2);
       }
-      console.error(error);
     }
   }
 
@@ -37,11 +50,19 @@ export class ApiService {
     )) as RoverImageData;
   }
 
-  async getRoverImagesForEarthDate(date: Date, page: number, roverType: RoverType, retries = 3, delay = 300): Promise<RoverImageData | undefined> {
+  async getRoverImagesForEarthDate(
+    year: number,
+    month: number,
+    day: number,
+    page: number,
+    roverType: RoverType,
+    retries = 3,
+    delay = 300
+  ): Promise<RoverImageData[] | undefined> {
     return (await this.getWithRetry(
-      `${this.baseUrl}/nasa/roverImagesForEarthDate?earth_date=${date}&page=${page}&rover_type=${roverType}`,
+      `${this.baseUrl}/nasa/roverImagesForEarthDate?year=${year}&month=${month}&day=${day}&page=${page}&rover_type=${roverType}`,
       retries,
       delay
-    )) as RoverImageData;
+    )) as RoverImageData[];
   }
 }

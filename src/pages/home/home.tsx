@@ -1,15 +1,27 @@
-import React from "react";
-import { Wind, Thermometer, Camera, Calendar, Rocket } from "lucide-react";
-import "./home.scss";
-import MarsMap from "../../components/marsMap/marsMap";
-import APOD from "../../components/apod/apod";
-import RoverImageExplorer from "../../components/rover-image-explorer/rover-image-explorer";
+import { useRef } from 'react';
+import './home.scss';
+import MarsMap from '../../components/marsMap/marsMap';
+import APOD from '../../components/apod/apod';
+import RoverImageExplorer from '../../components/rover-image-explorer/rover-image-explorer';
 
-export default function Home() {
+interface HomeProps {
+  apodRef: React.RefObject<HTMLDivElement>;
+  marsMapRef: React.RefObject<HTMLDivElement>;
+  roverImageExplorerRef: React.RefObject<HTMLDivElement>;
+}
+
+export default function Home({ apodRef, marsMapRef, roverImageExplorerRef }: HomeProps) {
   return (
     <>
-      <APOD />
-      <MarsMap />
+      <div ref={apodRef}>
+        <APOD />
+      </div>
+      <div ref={marsMapRef}>
+        <MarsMap />
+      </div>
+      <div ref={roverImageExplorerRef}>
+        <RoverImageExplorer />
+      </div>
     </>
   );
 }

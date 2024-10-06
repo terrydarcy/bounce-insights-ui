@@ -14,17 +14,9 @@
 }
 
 .map-container {
-  padding: 10px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 800px;
   height: 700px;
-
   margin-top: 70px;
-  background-color: #413232;
 }
 
 @media (max-width: 900px) {
