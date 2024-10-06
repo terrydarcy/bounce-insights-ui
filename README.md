@@ -2,6 +2,8 @@
 
 This is a react front end that integrates with a firebase function nodejs backend to pull NASA astronomy picture of the day, rover images and displays a map of mars landscape
 
+- Deployed live at: https://bounce-insights-ui.web.app/
+
 # How to run front end:
 
 - npm i
